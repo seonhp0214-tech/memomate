@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memomate</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Memomate</h1>
+    <nav id="nav">
+      <button data-view="today" class="active">오늘</button>
+      <button data-view="memos">메모</button>
+      <button data-view="todos">할 일</button>
+      <button data-view="calendar">캘린더</button>
+    </nav>
+  </header>
+
+  <p class="notice">주민등록번호, 계좌번호, 비밀번호 같은 민감한 정보는 적지 마세요. 내용은 이 브라우저에만 저장돼요.</p>
+
+  <main>
+    <!-- 오늘 -->
+    <section id="view-today" class="view"></section>
+
+    <!-- 메모 -->
+    <section id="view-memos" class="view" hidden>
+      <div class="two-col">
+        <div class="card">
+          <button id="memo-new" class="primary">+ 새 메모</button>
+          <ul id="memo-list" class="list"></ul>
+        </div>
+        <form id="memo-form" class="card">
+          <input id="memo-title" type="text" placeholder="제목" maxlength="100">
+          <textarea id="memo-body" placeholder="내용을 적어 보세요" rows="10"></textarea>
+          <p id="memo-time" class="muted"></p>
+          <div class="row">
+            <button type="submit" class="primary">저장</button>
+            <button type="button" id="memo-delete" class="danger" hidden>삭제</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 할 일 -->
+    <section id="view-todos" class="view" hidden>
+      <form id="todo-form" class="card row">
+        <input id="todo-text" type="text" placeholder="할 일을 입력하세요" maxlength="100" required>
+        <label class="muted">마감일 <input id="todo-due" type="date"></label>
+        <button type="submit" class="primary">추가</button>
+      </form>
+      <ul id="todo-list" class="list card"></ul>
+    </section>
+
+    <!-- 캘린더 -->
+    <section id="view-calendar" class="view" hidden>
+      <div class="two-col">
+        <div class="card">
+          <div class="row cal-head">
+            <button id="cal-prev">&lt;</button>
+            <strong id="cal-title"></strong>
+            <button id="cal-next">&gt;</button>
+            <button id="cal-today">오늘</button>
+          </div>
+          <div id="cal-grid" class="cal-grid"></div>
+        </div>
+        <div class="card" id="day-panel"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
